@@ -25,7 +25,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body class="bg-blue-50 min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-4xl bg-white rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-2">
+    <div class="w-full max-w-4xl bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
         <div class="hidden md:flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 to-blue-800 text-white p-10 text-center">
             <div class="bg-white/10 rounded-2xl p-6 mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">

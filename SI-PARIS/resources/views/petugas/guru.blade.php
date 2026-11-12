@@ -13,7 +13,7 @@
         @if ($errors->any())
             <div class="mb-3 p-2 rounded-lg bg-red-50 text-red-600 text-xs">{{ $errors->first() }}</div>
         @endif
-        <form method="POST" action="{{ route('petugas.guru.store') }}" class="grid sm:grid-cols-4 gap-3">
+        <form method="POST" action="{{ route('petugas.guru.store') }}" class="grid grid-cols-1 sm:grid-cols-4 gap-3">
             @csrf
             <input type="text" name="nama_lengkap" placeholder="Nama lengkap" class="border border-gray-200 rounded-lg px-3 py-2 text-sm" required>
             <input type="text" name="nip" placeholder="NIP" class="border border-gray-200 rounded-lg px-3 py-2 text-sm" required>
@@ -23,22 +23,22 @@
     </div>
 
     <div class="overflow-x-auto">
-    <table class="w-full text-sm">
+    <table class="w-full text-sm min-w-[640px]">
         <thead>
             <tr class="text-left text-gray-400 border-b border-gray-100">
-                <th class="py-2 font-medium">No</th>
-                <th class="py-2 font-medium">Nama Lengkap</th>
-                <th class="py-2 font-medium">NIP</th>
-                <th class="py-2 font-medium">Aksi</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">No</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Nama Lengkap</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">NIP</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Aksi</th>
             </tr>
         </thead>
         <tbody>
             @forelse($guru as $i => $g)
             <tr class="border-b border-gray-50">
-                <td class="py-3">{{ $i + 1 }}</td>
-                <td class="py-3 font-medium">{{ $g->nama_lengkap }}</td>
-                <td class="py-3">{{ $g->nip }}</td>
-                <td class="py-3">
+                <td class="py-3 pr-4">{{ $i + 1 }}</td>
+                <td class="py-3 pr-4 font-medium">{{ $g->nama_lengkap }}</td>
+                <td class="py-3 pr-4">{{ $g->nip }}</td>
+                <td class="py-3 pr-4">
                     <form method="POST" action="{{ route('petugas.user.destroy', $g->id) }}" onsubmit="return confirm('Hapus guru ini?')">
                         @csrf @method('DELETE')
                         <button class="text-red-500 hover:bg-red-50 p-1.5 rounded-lg">

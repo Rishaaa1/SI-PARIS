@@ -2,10 +2,10 @@
 <?php $__env->startSection('page-title', 'Kelola Barang / Inventaris'); ?>
 
 <?php $__env->startSection('content'); ?>
-<div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6" x-data="{ showForm: <?php echo e($errors->any() ? 'true' : 'false'); ?>, preview: null, edit: null, editPreview: null }">
-    <div class="flex items-center justify-between mb-5">
+<div class="bg-white rounded-xl border border-gray-100 shadow-sm p-4 sm:p-6" x-data="{ showForm: <?php echo e($errors->any() ? 'true' : 'false'); ?>, preview: null, edit: null, editPreview: null }">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
         <h3 class="font-semibold text-gray-800">Data Barang / Inventaris</h3>
-        <button type="button" @click="showForm = !showForm" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2.5 rounded-lg">+ Tambah Barang</button>
+        <button type="button" @click="showForm = !showForm" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2.5 rounded-lg whitespace-nowrap">+ Tambah Barang</button>
     </div>
 
     <?php if($errors->any()): ?>
@@ -14,10 +14,10 @@
 
     <!-- Form tambah barang -->
     <div x-show="showForm" style="display:none" class="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-5">
-        <form method="POST" action="<?php echo e(route('petugas.barang.store')); ?>" enctype="multipart/form-data" class="grid md:grid-cols-[150px_1fr] gap-5">
+        <form method="POST" action="<?php echo e(route('petugas.barang.store')); ?>" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-[150px_minmax(0,1fr)] gap-5">
             <?php echo csrf_field(); ?>
             <!-- Tempat gambar -->
-            <label class="block cursor-pointer">
+            <label class="block cursor-pointer min-w-0">
                 <span class="block text-xs font-medium text-gray-600 mb-1">Gambar barang</span>
                 <span class="flex items-center justify-center w-full h-36 md:w-[150px] border-2 border-dashed border-gray-300 hover:border-blue-500 rounded-lg bg-white overflow-hidden text-center text-xs text-gray-400">
                     <img x-show="preview" :src="preview" alt="Pratinjau" class="w-full h-full object-cover" style="display:none">
@@ -30,13 +30,13 @@
                        @change="preview = $event.target.files[0] ? URL.createObjectURL($event.target.files[0]) : null">
             </label>
 
-            <div class="grid sm:grid-cols-2 gap-3 content-start">
-                <input type="text" name="nama_barang" value="<?php echo e(old('nama_barang')); ?>" placeholder="Nama barang" class="border border-gray-200 rounded-lg px-3 py-2 text-sm" required>
-                <input type="text" name="kategori" value="<?php echo e(old('kategori')); ?>" placeholder="Kategori" class="border border-gray-200 rounded-lg px-3 py-2 text-sm">
-                <input type="number" name="stok" value="<?php echo e(old('stok')); ?>" placeholder="Stok" min="0" class="border border-gray-200 rounded-lg px-3 py-2 text-sm" required>
-                <input type="text" name="deskripsi" value="<?php echo e(old('deskripsi')); ?>" placeholder="Deskripsi (opsional)" class="border border-gray-200 rounded-lg px-3 py-2 text-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 content-start min-w-0">
+                <input type="text" name="nama_barang" value="<?php echo e(old('nama_barang')); ?>" placeholder="Nama barang" class="w-full min-w-0 border border-gray-200 rounded-lg px-3 py-2 text-sm" required>
+                <input type="text" name="kategori" value="<?php echo e(old('kategori')); ?>" placeholder="Kategori" class="w-full min-w-0 border border-gray-200 rounded-lg px-3 py-2 text-sm">
+                <input type="number" name="stok" value="<?php echo e(old('stok')); ?>" placeholder="Stok" min="0" class="w-full min-w-0 border border-gray-200 rounded-lg px-3 py-2 text-sm" required>
+                <input type="text" name="deskripsi" value="<?php echo e(old('deskripsi')); ?>" placeholder="Deskripsi (opsional)" class="w-full min-w-0 border border-gray-200 rounded-lg px-3 py-2 text-sm">
                 <div class="sm:col-span-2">
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg px-6 py-2">Simpan</button>
+                    <button class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg px-6 py-2.5">Simpan</button>
                 </div>
             </div>
         </form>
@@ -44,24 +44,24 @@
 
     <!-- Tabel barang -->
     <div class="overflow-x-auto">
-    <table class="w-full text-sm">
+    <table class="w-full text-sm min-w-[720px]">
         <thead>
             <tr class="text-left text-gray-400 border-b border-gray-100">
-                <th class="py-2 font-medium">No</th>
-                <th class="py-2 font-medium">Gambar</th>
-                <th class="py-2 font-medium">Nama Barang</th>
-                <th class="py-2 font-medium">Kategori</th>
-                <th class="py-2 font-medium">Stok</th>
-                <th class="py-2 font-medium">Tersedia</th>
-                <th class="py-2 font-medium">Status</th>
-                <th class="py-2 font-medium">Aksi</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">No</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Gambar</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Nama Barang</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Kategori</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Stok</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Tersedia</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Status</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Aksi</th>
             </tr>
         </thead>
         <tbody>
             <?php $__empty_1 = true; $__currentLoopData = $barang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
             <tr class="border-b border-gray-50">
-                <td class="py-3"><?php echo e($i + 1); ?></td>
-                <td class="py-3">
+                <td class="py-3 pr-4"><?php echo e($i + 1); ?></td>
+                <td class="py-3 pr-4">
                     <?php if($b->gambar_url): ?>
                         <img src="<?php echo e($b->gambar_url); ?>" @click="foto = '<?php echo e($b->gambar_url); ?>'" alt="<?php echo e($b->nama_barang); ?>" class="w-14 h-14 rounded-lg object-cover border border-gray-100 cursor-zoom-in">
                     <?php else: ?>
@@ -70,11 +70,11 @@
                         </div>
                     <?php endif; ?>
                 </td>
-                <td class="py-3 font-medium"><?php echo e($b->nama_barang); ?></td>
-                <td class="py-3 text-gray-500"><?php echo e($b->kategori); ?></td>
-                <td class="py-3"><?php echo e($b->stok); ?></td>
-                <td class="py-3"><?php echo e($b->stok_tersedia); ?></td>
-                <td class="py-3">
+                <td class="py-3 pr-4 font-medium"><?php echo e($b->nama_barang); ?></td>
+                <td class="py-3 pr-4 text-gray-500"><?php echo e($b->kategori); ?></td>
+                <td class="py-3 pr-4"><?php echo e($b->stok); ?></td>
+                <td class="py-3 pr-4"><?php echo e($b->stok_tersedia); ?></td>
+                <td class="py-3 pr-4">
                     <form method="POST" action="<?php echo e(route('petugas.barang.toggle', $b->id)); ?>">
                         <?php echo csrf_field(); ?>
                         <button type="submit" class="relative inline-flex h-6 w-11 items-center rounded-full transition <?php echo e($b->status === 'aktif' ? 'bg-blue-600' : 'bg-gray-300'); ?>">
@@ -82,7 +82,7 @@
                         </button>
                     </form>
                 </td>
-                <td class="py-3">
+                <td class="py-3 pr-4">
                     <div class="flex items-center gap-1">
                         <button type="button" title="Ubah"
                             @click="edit = <?php echo e(\Illuminate\Support\Js::from(['id' => $b->id, 'nama_barang' => $b->nama_barang, 'kategori' => $b->kategori, 'stok' => $b->stok, 'deskripsi' => $b->deskripsi, 'gambar' => $b->gambar_url])); ?>; editPreview = null"
@@ -143,4 +143,4 @@
 </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\SI-PARIS\resources\views/petugas/barang.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\resources\views/petugas/barang.blade.php ENDPATH**/ ?>

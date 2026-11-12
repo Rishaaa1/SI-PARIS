@@ -58,28 +58,28 @@
     </div>
 </div>
 
-<div class="grid lg:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
     <div class="lg:col-span-2 bg-white rounded-xl border border-blue-100 shadow-sm p-5">
         <h3 class="font-semibold text-gray-800 mb-4">Peminjaman Terbaru</h3>
         <div class="overflow-x-auto">
-        <table class="w-full text-sm">
+        <table class="w-full text-sm min-w-[560px]">
             <thead>
                 <tr class="text-left text-gray-400 border-b border-gray-100">
-                    <th class="py-2 font-medium">No</th>
-                    <th class="py-2 font-medium">Nama Barang</th>
-                    <th class="py-2 font-medium">Tanggal Pinjam</th>
-                    <th class="py-2 font-medium">Status</th>
-                    <th class="py-2 font-medium">Aksi</th>
+                    <th class="py-2 pr-4 font-medium whitespace-nowrap">No</th>
+                    <th class="py-2 pr-4 font-medium whitespace-nowrap">Nama Barang</th>
+                    <th class="py-2 pr-4 font-medium whitespace-nowrap">Tanggal Pinjam</th>
+                    <th class="py-2 pr-4 font-medium whitespace-nowrap">Status</th>
+                    <th class="py-2 pr-4 font-medium whitespace-nowrap">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($peminjamanTerbaru as $i => $p)
                 <tr class="border-b border-gray-50">
-                    <td class="py-3">{{ $i + 1 }}</td>
-                    <td class="py-3">{{ $p->nama_barang }}</td>
-                    <td class="py-3">{{ $p->tanggal_pinjam->format('d M Y') }}</td>
-                    <td class="py-3"><x-status-badge :status="$p->status" /></td>
-                    <td class="py-3">
+                    <td class="py-3 pr-4">{{ $i + 1 }}</td>
+                    <td class="py-3 pr-4">{{ $p->nama_barang }}</td>
+                    <td class="py-3 pr-4">{{ $p->tanggal_pinjam->format('d M Y') }}</td>
+                    <td class="py-3 pr-4"><x-status-badge :status="$p->status" /></td>
+                    <td class="py-3 pr-4">
 @if(\App\Support\FiturAkses::aktif('Peminjaman Alat'))
                         <a href="{{ route('peminjam.peminjaman.detail', $p->id) }}" class="text-blue-600 font-medium text-xs bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100">Detail</a>
 @endif

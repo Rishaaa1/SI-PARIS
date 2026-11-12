@@ -12,90 +12,144 @@ class BarangController extends Controller
     public function index()
     {
         $barang = Barang::latest()->get();
+
         return view('petugas.barang', compact('barang'));
     }
 
+    // Menambahkan barang baru
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nama_barang' => 'required|string|max:100',
             'kategori' => 'nullable|string|max:100',
             'stok' => 'required|integer|min:0',
             'deskripsi' => 'nullable|string',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:3072',
+            'gambar' => 'nullable|image',
         ], [
             'gambar.image' => 'File harus berupa gambar.',
-            'gambar.max' => 'Ukuran gambar maksimal 3 MB.',
         ]);
 
         $path = null;
+
+        // Upload gambar
         if ($request->hasFile('gambar')) {
-            $path = $request->file('gambar')->store('barang', 'public');
+            $path = $request->file('gambar')
+                ->store('barang', 'public');
         }
 
         Barang::create([
-            'nama_barang' => $request->nama_barang,
-            'kategori' => $request->kategori,
-            'deskripsi' => $request->deskripsi,
-            'stok' => $request->stok,
-            'stok_tersedia' => $request->stok,
+            'nama_barang' => $validated['nama_barang'],
+            'kategori' => $validated['kategori'] ?? null,
+            'deskripsi' => $validated['deskripsi'] ?? null,
+            'stok' => $validated['stok'],
+            'stok_tersedia' => $validated['stok'],
             'gambar' => $path,
             'status' => 'aktif',
         ]);
 
-        return back()->with('success', 'Barang berhasil ditambahkan.');
+        return back()->with(
+            'success',
+            'Barang berhasil ditambahkan.'
+        );
     }
 
+    // Mengubah data barang
     public function update(Request $request, $id)
     {
         $barang = Barang::findOrFail($id);
 
-        $request->validate([
+        $validated = $request->validate([
             'nama_barang' => 'required|string|max:100',
             'kategori' => 'nullable|string|max:100',
             'stok' => 'required|integer|min:0',
             'deskripsi' => 'nullable|string',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:3072',
+            'gambar' => 'nullable|image',
         ], [
             'gambar.image' => 'File harus berupa gambar.',
-            'gambar.max' => 'Ukuran gambar maksimal 3 MB.',
         ]);
 
-        $data = $request->only('nama_barang', 'kategori', 'stok', 'deskripsi');
+        $data = [
+            'nama_barang' => $validated['nama_barang'],
+            'kategori' => $validated['kategori'] ?? null,
+            'deskripsi' => $validated['deskripsi'] ?? null,
+            'stok' => $validated['stok'],
+        ];
 
-        // Jumlah tersedia ikut menyesuaikan selisih stok
-        $selisih = (int) $request->stok - (int) $barang->stok;
-        $data['stok_tersedia'] = max(0, (int) $barang->stok_tersedia + $selisih);
+        // Menyesuaikan stok tersedia berdasarkan perubahan stok
+        $selisih = (int) $validated['stok'] - (int) $barang->stok;
 
+        $data['stok_tersedia'] = max(
+            0,
+            (int) $barang->stok_tersedia + $selisih
+        );
+
+        // Jika ada gambar baru
         if ($request->hasFile('gambar')) {
+
+            // Simpan gambar baru terlebih dahulu
+            $pathBaru = $request->file('gambar')
+                ->store('barang', 'public');
+
+            // Hapus gambar lama
             if ($barang->gambar) {
-                Storage::disk('public')->delete($barang->gambar);
+                $gambarLama = str_replace(
+                    'storage/',
+                    '',
+                    $barang->gambar
+                );
+
+                Storage::disk('public')->delete($gambarLama);
             }
-            $data['gambar'] = $request->file('gambar')->store('barang', 'public');
+
+            $data['gambar'] = $pathBaru;
         }
 
         $barang->update($data);
 
-        return back()->with('success', 'Barang berhasil diperbarui.');
+        return back()->with(
+            'success',
+            'Barang berhasil diperbarui.'
+        );
     }
 
+    // Mengubah status barang
     public function toggleStatus($id)
     {
         $barang = Barang::findOrFail($id);
-        $barang->update(['status' => $barang->status === 'aktif' ? 'nonaktif' : 'aktif']);
-        return back()->with('success', 'Status barang diperbarui.');
+
+        $barang->update([
+            'status' => $barang->status === 'aktif'
+                ? 'nonaktif'
+                : 'aktif'
+        ]);
+
+        return back()->with(
+            'success',
+            'Status barang diperbarui.'
+        );
     }
 
+    // Menghapus barang
     public function destroy($id)
     {
         $barang = Barang::findOrFail($id);
 
+        // Hapus file gambar dari storage
         if ($barang->gambar) {
-            Storage::disk('public')->delete($barang->gambar);
+            $gambar = str_replace(
+                'storage/',
+                '',
+                $barang->gambar
+            );
+
+            Storage::disk('public')->delete($gambar);
         }
 
         $barang->delete();
 
-        return back()->with('success', 'Barang berhasil dihapus.');
+        return back()->with(
+            'success',
+            'Barang berhasil dihapus.'
+        );
     }
 }

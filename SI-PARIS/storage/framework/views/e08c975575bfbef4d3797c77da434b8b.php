@@ -26,4 +26,4 @@
 
 <a href="<?php echo e(route('login')); ?>" class="block text-center text-sm text-blue-600 font-medium mt-6">Sudah punya akun? Login</a>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.guest', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\SI-PARIS\resources\views/auth/register-pilih.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.guest', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\resources\views/auth/register-pilih.blade.php ENDPATH**/ ?>

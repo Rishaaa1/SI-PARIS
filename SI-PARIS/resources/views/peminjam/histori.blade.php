@@ -7,16 +7,16 @@
 <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
     <h3 class="font-semibold text-gray-800 mb-4">Histori Peminjaman Saya</h3>
     <div class="overflow-x-auto">
-    <table class="w-full text-sm">
+    <table class="w-full text-sm min-w-[640px]">
         <thead>
             <tr class="text-left text-gray-400 border-b border-blue-100">
-                <th class="py-2 font-medium">No</th>
-                <th class="py-2 font-medium">Barang</th>
-                <th class="py-2 font-medium">Jumlah</th>
-                <th class="py-2 font-medium">Tgl Pinjam</th>
-                <th class="py-2 font-medium">Tgl Kembali</th>
-                <th class="py-2 font-medium">Foto Pengambilan</th>
-                <th class="py-2 font-medium">Status</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">No</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Barang</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Jumlah</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Tgl Pinjam</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Tgl Kembali</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Foto Pengambilan</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Status</th>
             </tr>
         </thead>
         <tbody>

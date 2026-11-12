@@ -14,4 +14,4 @@
     [$label, $class] = $map[$status] ?? [ucfirst($status), 'bg-gray-100 text-gray-600'];
 @endphp
 
-<span class="text-xs font-semibold px-2.5 py-1 rounded-full {{ $class }}">{{ $label }}</span>
+<span class="inline-block whitespace-nowrap text-xs font-semibold px-2.5 py-1 rounded-full {{ $class }}">{{ $label }}</span>

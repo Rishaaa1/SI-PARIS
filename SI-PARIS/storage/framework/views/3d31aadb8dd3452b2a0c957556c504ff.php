@@ -12,8 +12,8 @@
         'gambar' => $b->gambar ? asset('storage/'.$b->gambar) : null,
     ]]);
 ?>
-<div class="w-full bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-5 md:p-8">
-<div class="grid lg:grid-cols-3 gap-6 items-start" x-data="{ pilih: '', data: <?php echo e(\Illuminate\Support\Js::from($dataBarang)); ?> }">
+<div class="w-full bg-gradient-to from-blue-600 to-blue-800 rounded-2xl p-5 md:p-8">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start" x-data="{ pilih: '', data: <?php echo e(\Illuminate\Support\Js::from($dataBarang)); ?> }">
 
     <!-- Form pengajuan -->
     <div class="lg:col-span-1 bg-white rounded-xl shadow-sm p-6 md:p-8 h-fit">
@@ -108,23 +108,23 @@
         <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
             <h3 class="font-semibold text-gray-800 mb-4">Riwayat Pengajuan</h3>
             <div class="overflow-x-auto">
-            <table class="w-full text-sm">
+            <table class="w-full text-sm min-w-[700px]">
                 <thead>
                     <tr class="text-left text-gray-400 border-b border-gray-100">
-                        <th class="py-2 font-medium">Barang</th>
-                        <th class="py-2 font-medium">Jumlah</th>
-                        <th class="py-2 font-medium">Tgl Pinjam</th>
-                        <th class="py-2 font-medium">Status</th>
-                        <th class="py-2 font-medium">Aksi</th>
+                        <th class="py-2 pr-4 font-medium whitespace-nowrap">Barang</th>
+                        <th class="py-2 pr-4 font-medium whitespace-nowrap">Jumlah</th>
+                        <th class="py-2 pr-4 font-medium whitespace-nowrap">Tgl Pinjam</th>
+                        <th class="py-2 pr-4 font-medium whitespace-nowrap">Status</th>
+                        <th class="py-2 pr-4 font-medium whitespace-nowrap">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $__empty_1 = true; $__currentLoopData = $riwayat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <tr class="border-b border-gray-50">
                         <td class="py-4"><?php echo e($r->nama_barang); ?></td>
-                        <td class="py-3"><?php echo e($r->jumlah); ?></td>
-                        <td class="py-3"><?php echo e($r->tanggal_pinjam->format('d M Y')); ?></td>
-                        <td class="py-3"><?php if (isset($component)) { $__componentOriginal8c81617a70e11bcf247c4db924ab1b62 = $component; } ?>
+                        <td class="py-3 pr-4"><?php echo e($r->jumlah); ?></td>
+                        <td class="py-3 pr-4"><?php echo e($r->tanggal_pinjam->format('d M Y')); ?></td>
+                        <td class="py-3 pr-4"><?php if (isset($component)) { $__componentOriginal8c81617a70e11bcf247c4db924ab1b62 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8c81617a70e11bcf247c4db924ab1b62 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.status-badge','data' => ['status' => $r->status]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('status-badge'); ?>
@@ -144,7 +144,7 @@
 <?php $component = $__componentOriginal8c81617a70e11bcf247c4db924ab1b62; ?>
 <?php unset($__componentOriginal8c81617a70e11bcf247c4db924ab1b62); ?>
 <?php endif; ?></td>
-                        <td class="py-3">
+                        <td class="py-3 pr-4">
                             <a href="<?php echo e(route('peminjam.peminjaman.detail', $r->id)); ?>" class="text-blue-600 font-medium text-xs bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100">Detail</a>
                         </td>
                     </tr>
@@ -159,4 +159,4 @@
 </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\SI-PARIS\resources\views/peminjam/peminjaman.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.dashboard', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\resources\views/peminjam/peminjaman.blade.php ENDPATH**/ ?>

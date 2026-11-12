@@ -35,14 +35,14 @@
         <x-status-badge :status="$peminjaman->status" />
     </div>
 
-    <div class="grid lg:grid-cols-3 gap-6 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
 
         <!-- KIRI: informasi + aksi -->
         <div class="lg:col-span-2 space-y-6">
 
             <div class="bg-white rounded-xl p-6 md:p-8 shadow-sm">
                 <p class="text-sm font-semibold text-gray-600 mb-5">Informasi Peminjaman</p>
-                <div class="grid sm:grid-cols-2 gap-x-8 gap-y-5 text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm">
                     <div>
                         <p class="text-gray-400 text-xs mb-1">Nama Barang</p>
                         <p class="font-medium text-base">{{ $peminjaman->nama_barang }}</p>
@@ -81,7 +81,7 @@
             @if($fotoAcc || $fotoTerima)
                 <div class="bg-white rounded-xl p-6 md:p-8 shadow-sm">
                     <p class="text-sm font-semibold text-gray-600 mb-5">Foto</p>
-                    <div class="grid sm:grid-cols-2 gap-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         @if($fotoAcc)
                             <div>
                                 <p class="text-xs text-gray-400 mb-2">Bukti foto barang siap diambil (dari petugas)</p>

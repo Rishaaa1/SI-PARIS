@@ -110,7 +110,7 @@
 
 
     {{-- NOTIFIKASI, AKTIVITAS DAN PENGINGAT --}}
-    <div class="grid lg:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         {{-- NOTIFIKASI TERBARU --}}
         @if(\App\Support\FiturAkses::aktif('Notifikasi Petugas'))

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 
 class Barang extends Model
 {
@@ -24,11 +26,11 @@ class Barang extends Model
     /** URL gambar barang (null bila belum ada). */
     public function getGambarUrlAttribute(): ?string
     {
-        return $this->gambar ? asset('storage/'.$this->gambar) : null;
-    }
+        if (!$this->gambar) {
+        return null;
+        }
+        $path = ltrim(str_replace('storage/', '', $this->gambar), '/');
 
-    public function peminjaman()
-    {
-        return $this->hasMany(Peminjaman::class, 'barang_id');
+        return Storage::disk('public')->url($path);
     }
 }

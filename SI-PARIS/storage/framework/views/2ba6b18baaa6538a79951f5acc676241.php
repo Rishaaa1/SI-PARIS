@@ -33,4 +33,4 @@
 
     document.querySelectorAll('input[type="password"]').forEach(pasang);
 })();
-</script><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\SI-PARIS\resources\views/partials/toggle-password.blade.php ENDPATH**/ ?>
+</script><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\resources\views/partials/toggle-password.blade.php ENDPATH**/ ?>

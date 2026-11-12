@@ -24,7 +24,7 @@
             <x-status-badge :status="$pj->status" />
         </div>
 
-        <div class="mt-5 grid md:grid-cols-2 gap-4">
+        <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="rounded-xl bg-blue-50 border border-blue-100 p-5">
                 <p class="text-xs text-blue-700">Waktu pengajuan tercatat</p>
                 <p class="text-base md:text-lg font-semibold text-blue-700">
@@ -54,14 +54,14 @@
         </div>
     </div>
 
-    <div class="grid lg:grid-cols-5 gap-6 items-start" x-data="{ prev: null }">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start" x-data="{ prev: null }">
 
         <!-- KIRI: data permintaan + bukti foto -->
         <div class="lg:col-span-3 space-y-6">
 
             <div class="bg-white rounded-2xl border border-blue-100 shadow-sm p-6 md:p-8">
                 <p class="text-sm font-semibold text-gray-600 mb-5">Data Permintaan</p>
-                <div class="grid sm:grid-cols-2 gap-x-8 gap-y-5 text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 text-sm">
                     <div class="sm:col-span-2">
                         <p class="text-gray-400 text-xs mb-1">Nama Peminjam</p>
                         <p class="font-medium text-base">{{ $pj->peminjam->nama_lengkap }} ({{ $pj->peminjam->jenis_label }} &middot; {{ $pj->peminjam->keterangan }})</p>
@@ -94,7 +94,7 @@
                 <p class="text-sm font-semibold text-gray-600">Bukti Foto</p>
                 <p class="text-xs text-gray-400 mb-5">Foto yang diupload petugas sebagai bukti barang siap diambil. Setelah ACC, foto ini bisa dilihat peminjam. Klik foto untuk memperbesar.</p>
 
-                <div class="grid sm:grid-cols-2 gap-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                         <p class="text-xs text-gray-400 mb-2">Foto dari petugas</p>
                         @if($fotoAcc)

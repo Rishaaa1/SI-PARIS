@@ -220,4 +220,4 @@
         </div>
     </footer>
 </body>
-</html><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\SI-PARIS\resources\views/welcome.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\resources\views/welcome.blade.php ENDPATH**/ ?>

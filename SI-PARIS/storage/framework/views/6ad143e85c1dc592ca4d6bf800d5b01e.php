@@ -42,4 +42,4 @@ unset($__defined_vars, $__key, $__value); ?>
     [$label, $class] = $map[$status] ?? [ucfirst($status), 'bg-gray-100 text-gray-600'];
 ?>
 
-<span class="text-xs font-semibold px-2.5 py-1 rounded-full <?php echo e($class); ?>"><?php echo e($label); ?></span><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\SI-PARIS\resources\views/components/status-badge.blade.php ENDPATH**/ ?>
+<span class="inline-block whitespace-nowrap text-xs font-semibold px-2.5 py-1 rounded-full <?php echo e($class); ?>"><?php echo e($label); ?></span><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\resources\views/components/status-badge.blade.php ENDPATH**/ ?>

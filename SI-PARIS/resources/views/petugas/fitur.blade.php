@@ -15,7 +15,7 @@
     </div>
 
     <div x-show="showForm" class="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-5">
-        <form method="POST" action="{{ route('petugas.fitur.store') }}" class="grid sm:grid-cols-3 gap-3">
+        <form method="POST" action="{{ route('petugas.fitur.store') }}" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             @csrf
             <input type="text" name="nama_fitur" placeholder="Nama fitur" class="border border-gray-200 rounded-lg px-3 py-2 text-sm" required>
             <input type="text" name="deskripsi" placeholder="Deskripsi" class="border border-gray-200 rounded-lg px-3 py-2 text-sm sm:col-span-1">
@@ -24,23 +24,23 @@
     </div>
 
     <div class="overflow-x-auto">
-    <table class="w-full text-sm">
+    <table class="w-full text-sm min-w-[560px]">
         <thead>
             <tr class="text-left text-gray-400 border-b border-gray-100">
-                <th class="py-2 font-medium">No</th>
-                <th class="py-2 font-medium">Nama Fitur</th>
-                <th class="py-2 font-medium">Deskripsi</th>
-                <th class="py-2 font-medium">Status</th>
-                <th class="py-2 font-medium">Aksi</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">No</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Nama Fitur</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Deskripsi</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Status</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Aksi</th>
             </tr>
         </thead>
         <tbody>
             @forelse($fitur as $i => $f)
             <tr class="border-b border-gray-50">
-                <td class="py-3">{{ $i + 1 }}</td>
-                <td class="py-3 font-medium">{{ $f->nama_fitur }}</td>
-                <td class="py-3 text-gray-500">{{ $f->deskripsi }}</td>
-                <td class="py-3">
+                <td class="py-3 pr-4">{{ $i + 1 }}</td>
+                <td class="py-3 pr-4 font-medium">{{ $f->nama_fitur }}</td>
+                <td class="py-3 pr-4 text-gray-500">{{ $f->deskripsi }}</td>
+                <td class="py-3 pr-4">
                     <form method="POST" action="{{ route('petugas.fitur.toggle', $f->id) }}">
                         @csrf
                         <button type="submit" class="relative inline-flex h-6 w-11 items-center rounded-full transition {{ $f->status === 'aktif' ? 'bg-blue-600' : 'bg-gray-300' }}">
@@ -48,7 +48,7 @@
                         </button>
                     </form>
                 </td>
-                <td class="py-3">
+                <td class="py-3 pr-4">
                     <div class="flex gap-2">
                         <form method="POST" action="{{ route('petugas.fitur.destroy', $f->id) }}" onsubmit="return confirm('Hapus fitur ini?')">
                             @csrf @method('DELETE')

@@ -1,6 +1,6 @@
 
 
-<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-8">
 
 <?php if (isset($component)) { $__componentOriginalc295f12dca9d42f28a259237a5724830 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalc295f12dca9d42f28a259237a5724830 = $attributes; } ?>
@@ -87,7 +87,7 @@
 <?php endif; ?>
 <?php $component->withAttributes(['href' => ''.e(route('peminjam.laporan')).'','active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('peminjam.laporan'))]); ?>
     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-    Pengembalian / Laporan
+    Pengembalian / Laporan Kendala
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalc295f12dca9d42f28a259237a5724830)): ?>
@@ -99,4 +99,4 @@
 <?php unset($__componentOriginalc295f12dca9d42f28a259237a5724830); ?>
 <?php endif; ?>
 <?php endif; ?>
-</div><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\SI-PARIS\resources\views/partials/sidebar-peminjam.blade.php ENDPATH**/ ?>
+</div><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\resources\views/partials/sidebar-peminjam.blade.php ENDPATH**/ ?>

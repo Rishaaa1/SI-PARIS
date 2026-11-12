@@ -14,7 +14,7 @@
     ]]);
 @endphp
 <div class="w-full bg-gradient-to from-blue-600 to-blue-800 rounded-2xl p-5 md:p-8">
-<div class="grid lg:grid-cols-3 gap-6 items-start" x-data="{ pilih: '', data: {{ \Illuminate\Support\Js::from($dataBarang) }} }">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start" x-data="{ pilih: '', data: {{ \Illuminate\Support\Js::from($dataBarang) }} }">
 
     <!-- Form pengajuan -->
     <div class="lg:col-span-1 bg-white rounded-xl shadow-sm p-6 md:p-8 h-fit">
@@ -109,24 +109,24 @@
         <div class="bg-white rounded-xl shadow-sm p-6 md:p-8">
             <h3 class="font-semibold text-gray-800 mb-4">Riwayat Pengajuan</h3>
             <div class="overflow-x-auto">
-            <table class="w-full text-sm">
+            <table class="w-full text-sm min-w-[700px]">
                 <thead>
                     <tr class="text-left text-gray-400 border-b border-gray-100">
-                        <th class="py-2 font-medium">Barang</th>
-                        <th class="py-2 font-medium">Jumlah</th>
-                        <th class="py-2 font-medium">Tgl Pinjam</th>
-                        <th class="py-2 font-medium">Status</th>
-                        <th class="py-2 font-medium">Aksi</th>
+                        <th class="py-2 pr-4 font-medium whitespace-nowrap">Barang</th>
+                        <th class="py-2 pr-4 font-medium whitespace-nowrap">Jumlah</th>
+                        <th class="py-2 pr-4 font-medium whitespace-nowrap">Tgl Pinjam</th>
+                        <th class="py-2 pr-4 font-medium whitespace-nowrap">Status</th>
+                        <th class="py-2 pr-4 font-medium whitespace-nowrap">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($riwayat as $r)
                     <tr class="border-b border-gray-50">
                         <td class="py-4">{{ $r->nama_barang }}</td>
-                        <td class="py-3">{{ $r->jumlah }}</td>
-                        <td class="py-3">{{ $r->tanggal_pinjam->format('d M Y') }}</td>
-                        <td class="py-3"><x-status-badge :status="$r->status" /></td>
-                        <td class="py-3">
+                        <td class="py-3 pr-4">{{ $r->jumlah }}</td>
+                        <td class="py-3 pr-4">{{ $r->tanggal_pinjam->format('d M Y') }}</td>
+                        <td class="py-3 pr-4"><x-status-badge :status="$r->status" /></td>
+                        <td class="py-3 pr-4">
                             <a href="{{ route('peminjam.peminjaman.detail', $r->id) }}" class="text-blue-600 font-medium text-xs bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100">Detail</a>
                         </td>
                     </tr>

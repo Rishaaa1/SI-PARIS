@@ -3,7 +3,7 @@
 @section('page-title', 'Pengingat Pengembalian')
 
 @section('content')
-<div class="grid lg:grid-cols-2 gap-6" x-data="{ pilih: '', pesan: '' }">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6" x-data="{ pilih: '', pesan: '' }">
     <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
         <h3 class="font-semibold text-gray-800 mb-1">Barang Sedang Dipinjam</h3>
         <p class="text-xs text-gray-400 mb-4">Pilih peminjaman untuk mengirim pengingat pengembalian ke siswa / guru.</p>

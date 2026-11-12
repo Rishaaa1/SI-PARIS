@@ -299,4 +299,4 @@
 
 <?php echo $__env->make('partials.toggle-password', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 </body>
-</html><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\SI-PARIS\resources\views/layouts/dashboard.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\resources\views/layouts/dashboard.blade.php ENDPATH**/ ?>

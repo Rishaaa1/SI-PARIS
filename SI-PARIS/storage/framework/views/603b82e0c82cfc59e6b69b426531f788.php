@@ -235,4 +235,4 @@
 <?php if (isset($__componentOriginalc295f12dca9d42f28a259237a5724830)): ?>
 <?php $component = $__componentOriginalc295f12dca9d42f28a259237a5724830; ?>
 <?php unset($__componentOriginalc295f12dca9d42f28a259237a5724830); ?>
-<?php endif; ?><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\SI-PARIS\resources\views/partials/sidebar-petugas.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\resources\views/partials/sidebar-petugas.blade.php ENDPATH**/ ?>

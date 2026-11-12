@@ -13,7 +13,7 @@
         @if ($errors->any())
             <div class="mb-3 p-2 rounded-lg bg-red-50 text-red-600 text-xs">{{ $errors->first() }}</div>
         @endif
-        <form method="POST" action="{{ route('petugas.siswa.store') }}" class="grid sm:grid-cols-5 gap-3">
+        <form method="POST" action="{{ route('petugas.siswa.store') }}" class="grid grid-cols-1 sm:grid-cols-5 gap-3">
             @csrf
             <input type="text" name="nama_lengkap" placeholder="Nama lengkap" class="border border-gray-200 rounded-lg px-3 py-2 text-sm" required>
             <input type="text" name="nis" placeholder="NIS" class="border border-gray-200 rounded-lg px-3 py-2 text-sm" required>
@@ -24,26 +24,26 @@
     </div>
 
     <div class="overflow-x-auto">
-    <table class="w-full text-sm">
+    <table class="w-full text-sm min-w-[640px]">
         <thead>
             <tr class="text-left text-gray-400 border-b border-gray-100">
-                <th class="py-2 font-medium">No</th>
-                <th class="py-2 font-medium">Nama Lengkap</th>
-                <th class="py-2 font-medium">NIS</th>
-                <th class="py-2 font-medium">Kelas</th>
-                <th class="py-2 font-medium">Tanggal Lahir</th>
-                <th class="py-2 font-medium">Aksi</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">No</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Nama Lengkap</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">NIS</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Kelas</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Tanggal Lahir</th>
+                <th class="py-2 pr-4 font-medium whitespace-nowrap">Aksi</th>
             </tr>
         </thead>
         <tbody>
             @forelse($siswa as $i => $s)
             <tr class="border-b border-gray-50">
-                <td class="py-3">{{ $i + 1 }}</td>
-                <td class="py-3 font-medium">{{ $s->nama_lengkap }}</td>
-                <td class="py-3">{{ $s->nis }}</td>
-                <td class="py-3">{{ $s->kelas }}</td>
-                <td class="py-3">{{ $s->tanggal_lahir ? $s->tanggal_lahir->format('d/m/Y') : '-' }}</td>
-                <td class="py-3">
+                <td class="py-3 pr-4">{{ $i + 1 }}</td>
+                <td class="py-3 pr-4 font-medium">{{ $s->nama_lengkap }}</td>
+                <td class="py-3 pr-4">{{ $s->nis }}</td>
+                <td class="py-3 pr-4">{{ $s->kelas }}</td>
+                <td class="py-3 pr-4">{{ $s->tanggal_lahir ? $s->tanggal_lahir->format('d/m/Y') : '-' }}</td>
+                <td class="py-3 pr-4">
                     <form method="POST" action="{{ route('petugas.user.destroy', $s->id) }}" onsubmit="return confirm('Hapus siswa ini?')">
                         @csrf @method('DELETE')
                         <button class="text-red-500 hover:bg-red-50 p-1.5 rounded-lg">

@@ -37,4 +37,4 @@ unset($__defined_vars, $__key, $__value); ?>
     <?php if($badge): ?>
         <span class="text-[11px] font-bold px-2 py-0.5 rounded-full <?php echo e($active ? 'bg-white/20 text-white' : 'bg-red-100 text-red-600'); ?>"><?php echo e($badge); ?></span>
     <?php endif; ?>
-</a><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\SI-PARIS\resources\views/components/nav-link.blade.php ENDPATH**/ ?>
+</a><?php /**PATH C:\htdocs\SI-PARIS\SI-PARIS\resources\views/components/nav-link.blade.php ENDPATH**/ ?>
